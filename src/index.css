@@ -1,0 +1,246 @@
+body,html,.App,#root {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100%;
+  /* background: yellowgreen; */
+}
+.wrapper {  
+  background: red; 
+  height: 100%;
+}
+.cstm-row{
+ background:blueviolet;  
+ height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row  nowrap;
+  align-items: stretch;
+}
+.Default-view{
+  color:gray;
+  font-size:30px;
+  background:white;
+  margin:0;  
+  flex-grow: 4;  
+  display:flex;
+  flex-flow: row wrap ;
+  align-items: flex-start;
+  justify-content: center
+    
+
+}
+.Default-view .widget
+{ 
+ 
+  margin-right: auto;
+}
+.user-chart{
+  width: 500px;
+  height: 350px;
+  align-self: center;
+  padding-right: 20px;
+}
+
+.side-bar{
+  color:gray;
+  font-size:30px;
+  background:white;
+  margin:0;
+  display: flex;
+  flex-flow:column;   
+  flex-grow: 1;   
+                                                                                                                                                                                                                                                                 
+}
+.dp{ 
+  margin-top:20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  
+  overflow: hidden;
+}
+.side-bar div.side-bar-menu{       
+  padding: 0;                                                                                                                                                                                                                                                                       
+}
+
+
+.side-bar ul{
+  padding: 0;  
+  display: flex;
+  flex-flow: column;
+ 
+}
+.side-bar .side-bar-menu li{
+ list-style: none;
+ margin-left:0;
+ padding-left:30px;
+ font-size: 14px;
+ margin-top: 20px;
+ text-align: left;
+ cursor: pointer;
+ display: flex; 
+ align-items: center;
+
+}
+.side-bar .side-bar-menu li i svg{
+  color:rgb(203,218,41);
+  font-size: 30px; 
+  position: absolute;
+}
+.side-bar .side-bar-menu li i{
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ border-style: solid;
+ border-width: thin;
+ border-color:rgb(203,218,41); 
+ position: relative;
+ display: inline-block;
+ padding: 0.2em 0.3em;
+
+
+}
+.personalization-settings{
+  margin-top: auto;
+  font-size: 16px;
+  background-color: white;
+  color:gray;
+  padding: 10px;
+ }
+
+.middle-bar{
+  color:white;
+  font-size:30px;
+  background:greenyellow;
+  margin:0;
+  padding: 0;
+  flex-grow: 1;
+  width: 320px;
+  
+
+}
+.main-bar{ 
+  font-size:30px;
+  background:white;
+  margin:0;  
+  flex-grow: 7;  
+}
+.app-bar{
+  background-color:green;
+
+}
+
+.cstm-actions{
+  align-self: flex-end;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.optial-btns div{
+  padding-left: 0;
+}
+
+/* components */
+
+
+.users{
+  color:gray;  
+  height: 100%;
+  margin: 0;
+  -webkit-display: -webkit-box;
+  -webkit-display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.user-section {
+  
+    color: gray;
+    padding: 1em;
+   
+}
+
+.content {
+    -webkit-flex-grow: 1;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+.user-header{
+  display: flex;
+  justify-content: flex-end;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  background-color:teal;
+
+}
+.user-header div{
+ margin-right: auto;
+ padding-left: 10px;
+ color:white;
+
+}
+.content.user-section{
+  display: flex;
+  flex-flow: column;
+  }
+  .content.user-section table{
+    font-size: 18px;
+  }
+
+  .content.user-section table > tr > td:first-child{
+    text-align: right;
+    padding-right:20px;
+  }
+  .content.user-section table > tr > td +td {
+    text-align: left
+  }
+  .content.user-section div{   
+   align-self: flex-end;
+  }
+
+  .General-setting{
+    display: flex;
+    flex-flow: column;    
+    padding: 0;
+  }
+
+  .General-setting ul{ 
+  padding: 0;
+  }
+
+  .General-setting ul li{
+    margin: 2px;
+    text-align: left;
+    list-style: none;  
+    margin-left: 0;
+  }
+  .prop-body{
+    display: flex;
+    flex-flow: column
+  }
+  .prop-body .prop-toolbar{
+  align-self: flex-end;
+  padding: 5px;
+  }
+
+  .prop-template{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .prop-template .left-content{
+flex-grow: 1;
+  }
+  .prop-template .main-content{
+    flex-grow: 2;    
+  }
