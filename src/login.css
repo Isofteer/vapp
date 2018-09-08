@@ -1,0 +1,27 @@
+.login-page{
+    display:flex;
+    justify-content:  center;   
+    background-color: whitesmoke;
+    align-items: center;
+    height: 100%;
+}
+.login-page .login-title{
+   flex-basis: 40%
+}
+.login-page div.login-area{
+ display:flex;
+padding: 11px;
+flex-flow: column wrap;
+
+
+
+}
+
+
+.login-page .login-actions {
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    
+    
+}

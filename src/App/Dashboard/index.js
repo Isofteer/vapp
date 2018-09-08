@@ -8,7 +8,7 @@ import DefaultView from './Default'
 import User from './user/Users'
 import Propasal from './Propasal/Propasal'
 import  ExpansionPanel from './expansionpanels'
-
+import Login from './Login'
 class Dashboard extends Component {
     constructor(props){
         super(props);
@@ -16,6 +16,7 @@ class Dashboard extends Component {
                 name:"tonnie",
                 m_open:false,
                 defaultView:false,
+                loggedIn:false,
         }
 
     }
@@ -42,7 +43,11 @@ handleViewAdmin = (e,show)=>{
     {
         return (
             <div className='container-fluid wrapper'> 
-             <div className =" row cstm-row">
+
+              {
+                (this.state.loggedIn)?             
+
+                  <div className =" row cstm-row">
                 <div className="side-bar">
                    
                 <div className="dp">
@@ -104,6 +109,9 @@ handleViewAdmin = (e,show)=>{
                
                    
             </div>
+                 :<Login/>
+             }
+            
             </div>
         )
     }
