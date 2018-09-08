@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import {Chip,Avatar,List,ListItem,ListItemIcon,ListItemText, Divider, Paper,AppBar,Toolbar,Typography }from '@material-ui/core';
 import {Image,BeachAccess,Work} from '@material-ui/icons';
 
-class PropasalTemplate extends Component{
+class PropasalDisplay extends Component{
 
     constructor(props)
     {        super(props);
@@ -63,4 +63,4 @@ class PropasalTemplate extends Component{
         )
     }
 }
-export default PropasalTemplate;
+export default PropasalDisplay;
