@@ -30,6 +30,7 @@ handleLogin  = (e) =>{
         console.log(newAccount);
         let accounts = await this.web3.eth.getAccounts();
         console.log(accounts);
+        console.log("hellwo");
     })();
 
 
