@@ -63,6 +63,9 @@ handleViewAdmin = (e,show)=>{
                         <i><Work/></i> &nbsp; Propasal
                         </li>
                         <li>
+                        <i><Work/></i> &nbsp;Live Logs
+                        </li>
+                        <li>
                         <i><Work/></i> &nbsp; Statistics
                         </li>
                         <li>
