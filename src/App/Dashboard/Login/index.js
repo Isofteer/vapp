@@ -4,40 +4,91 @@ import { withStyles } from '@material-ui/core/styles';
 import {List,ListItem,ListItemIcon,ListItemText,Button,TextField , Divider,Card,CardHeader,CardContent}from '@material-ui/core';
 import {Image,BeachAccess,Work} from '@material-ui/icons';
 import Web3 from 'web3'
+import {web3,votingContract,defaultAccount} from '../../Contracts'
 class Login extends Component {
 
+
+   
 constructor(props)
 {
-    super(props);
-    this.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"))
-
+    super(props);  
+    
     this.state ={
         username:'',
-        password:''
+        password:'',
+        usersArray: []
     }
 }
 handleChange = (e)=>{
+
 this.setState({[e.target.name]:e.target.value});
-console.log(this.web3);
+
+
 
 }
-handleLogin  = (e) =>{
+handleLogin_  = (e) =>{   
+    console.log( votingContract.methods);     
+    let usersArray = [];      
+
+    let self = this;
+        votingContract.methods.GetUsers().call({from: defaultAccount},
+        function(error, result){
+            console.log(result);
+
+            console.log(error); 
+
+
+            if(error)
+            {
+                alert("there was an error")
+            }
+            else{
+                console.log( result[0]);
+                result[0].map((address,index)=>{                 
+                  
+                    usersArray.push({address:address,
+                         firstName: web3.utils.hexToAscii(result[1][index]),
+                         surname: web3.utils.hexToAscii(result[2][index]),
+                         privilage:result[3][index]})
+            
+                        
+
+                })
+
+                self.setState({['usersArray']:[...usersArray]})
+   
+               
+            }
+
+    });
+
+   
+    console.log(this.state.usersArray);
+}
+
+
+handleLogin  = (e) =>{  
+
 
     console.log(this.state);
-    console.log(this.web3);
-    (async () => {
-        let newAccount = await this.web3.eth.create('9222');
-        console.log(newAccount);
-        let accounts = await this.web3.eth.getAccounts();
-        console.log(accounts);
-        console.log("hellwo");
-    })();
+
+    // votingContract.methods.Login(this.state.username,this.state.password).call({from: defaultAccount},
+    //     function(error, result){
+
+    //            console.log(result);
+    //            console.log(error);
 
 
+    //     });
+}
 
+
+componentWillMount() {
 
 
 }
+
+
 render(){
     return (
             <div className = "login-page">  
