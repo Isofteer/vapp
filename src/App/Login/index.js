@@ -72,14 +72,14 @@ handleLogin  = (e) =>{
 
     console.log(this.state);
 
-    // votingContract.methods.Login(this.state.username,this.state.password).call({from: defaultAccount},
-    //     function(error, result){
+    votingContract.methods.Login(this.state.username,web3.utils.fromAscii(this.state.password)).call({from: defaultAccount},
+        function(error, result){
 
-    //            console.log(result);
-    //            console.log(error);
+               console.log(result);
+               console.log(error);
 
 
-    //     });
+        });
 }
 
 

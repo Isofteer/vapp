@@ -1,8 +1,8 @@
 import Web3 from 'web3'
 
-var DefaultAccount = '0x8347f5b7527dd1b580bf4173a9974d3e1eed3916'
+var DefaultAccount = '0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1'
 
-var ContractAddress = "0x671e5abeac24c9853f61be7cc3168d26820a063c"
+var ContractAddress = "0xe78a0f7e598cc8b0bb87894b0f60dd2a88d6a8ab"
 
  var web3Instance = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 

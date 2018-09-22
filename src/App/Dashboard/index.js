@@ -8,7 +8,7 @@ import DefaultView from './Default'
 import User from './user/Users'
 import Propasal from './Propasal/Propasal'
 import  ExpansionPanel from './expansionpanels'
-import Login from './Login'
+import Login from '..Login/Login'
 class Dashboard extends Component {
     constructor(props){
         super(props);
