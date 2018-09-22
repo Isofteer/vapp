@@ -8,12 +8,19 @@ import  CreateUser from './Actions/CreateUser';
 
 class Content extends React.Component{
 
+    handleCreateUser  = (user)=>{
+    this.props.action.CreateUser(user);
+    }
+
     render (){
+    let props = this.props;
        return (<div> <h1>Admin section</h1>
        
        
-       <CreateUser />
-       
+       <CreateUser  func ={props} />
+       <button onClick={()=>this.handleCreateUser({})}>
+                 create user man
+       </button>
        
         </div>)
     }

@@ -2,7 +2,7 @@
   "name": "vapp",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://isofteer.github.io/vapp",
+  "homepage": "http://isofteer.github.io/vapp",
   "dependencies": {
     "@amcharts/amcharts4": "^4.0.0-beta.48",
     "@material-ui/core": "^1.5.1",
@@ -11,7 +11,9 @@
     "bootstrap-4-grid": "^2.4.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
     "web3": "^1.0.0-beta.35"
   },
   "scripts": {

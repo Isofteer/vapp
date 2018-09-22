@@ -6,7 +6,6 @@ import {Image,BeachAccess,Work} from '@material-ui/icons';
 
 
 
-
 class CreateUser  extends Component {
 
     constructor (props) {
@@ -24,6 +23,7 @@ class CreateUser  extends Component {
             ]
 
         }
+        console.log(this.props)
     }
     handleInputChange = (e)=>
     {
@@ -45,7 +45,7 @@ class CreateUser  extends Component {
     handleSaveUser = ()=>
     {
      console.log(this.state)
-
+      this.props.func.action.CreateUser(this.state);
     }
 
     render(){
