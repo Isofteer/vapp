@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import {List,ListItem,ListItemIcon,ListItemText,Button,TextField , Divider,Card,CardHeader,CardContent}from '@material-ui/core';
 import {Image,BeachAccess,Work} from '@material-ui/icons';
 import Web3 from 'web3'
-import {web3,votingContract,defaultAccount} from '../../Contracts'
+import {web3,votingContract,defaultAccount} from '../Contracts'
 class Login extends Component {
 
 
@@ -26,7 +26,7 @@ this.setState({[e.target.name]:e.target.value});
 
 
 }
-handleLogin_  = (e) =>{   
+handleShowUsers  = (e) =>{   
     console.log( votingContract.methods);     
     let usersArray = [];      
 
@@ -72,11 +72,43 @@ handleLogin  = (e) =>{
 
     console.log(this.state);
 
-    votingContract.methods.Login(this.state.username,web3.utils.fromAscii(this.state.password)).call({from: defaultAccount},
-        function(error, result){
+    console.log(web3.utils.fromAscii(this.state.password));
 
-               console.log(result);
-               console.log(error);
+
+
+    votingContract.methods.Login(web3.utils.fromAscii(this.state.password)).call({from: this.state.username},
+        (error, response)=>{
+
+            if(error){
+                  alert ("There was a problem logging in ")
+            }
+            else{
+
+                console.log(response);
+
+              var UserObject = {
+                  firstName: web3.utils.hexToAscii(response[0]),
+                  surname: web3.utils.hexToAscii(response[1]),
+                  privilage: response[2]
+              }
+              console.log(parseInt(UserObject.privilage));
+                     if( parseInt(UserObject.privilage))
+                     {
+                        this.props.handleLogin(true);
+                       
+                     }
+                     else
+                     {
+                        alert("No such person ")                    
+                     }
+              
+            }
+               
+              
+
+
+            
+
 
 
         });
@@ -91,8 +123,12 @@ componentWillMount() {
 
 render(){
     return (
-            <div className = "login-page">  
-
+            <div className = "login-page">        
+            <div>
+                <Button onClick = {() => {this.handleShowUsers() }}>
+                        Show Users
+                </Button>
+            </div>
              <div className="login-title">
                    <h1> Democratic Voting App</h1>
                    <span> iSofteer</span>
@@ -102,6 +138,7 @@ render(){
                 <TextField
                     id="username"
                     name="username"
+                    defaultValue = "0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1"
                     label="Account Address"                  
                     value={this.state.username}
                     onChange={(e) =>this.handleChange(e)}

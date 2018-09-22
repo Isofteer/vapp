@@ -8,7 +8,7 @@ import DefaultView from './Default'
 import User from './user/Users'
 import Propasal from './Propasal/Propasal'
 import  ExpansionPanel from './expansionpanels'
-import Login from '..Login/Login'
+import Login from '../Login'
 class Dashboard extends Component {
     constructor(props){
         super(props);
@@ -38,6 +38,12 @@ handleViewAdmin = (e,show)=>{
     
 }
 
+handleLogin = (loginState)=>{
+    this.setState({
+        ['loggedIn']:loginState
+    });
+
+}
 
     render()
     {
@@ -112,7 +118,7 @@ handleViewAdmin = (e,show)=>{
                
                    
             </div>
-                 :<Login/>
+                 :<Login   handleLogin = {this.handleLogin.bind(this)}/>
              }
             
             </div>
