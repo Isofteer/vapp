@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MainApp from './App/Dashboard'
+import MainApp from './App/Dashboard_new'
 import Web3 from 'web3'
 import logo from './logo.svg';
 import './App.css';
