@@ -12,8 +12,8 @@ import {Image,BeachAccess,Work} from '@material-ui/icons';
          }
     render (){
         return (
-        <div className = "parent-wrapper">           
-             <div className="side-menu-bar">                     
+        <div className = "admin-sidebar-menu">           
+             <div className="side-menubar">                     
             <div className="dp">
                 <img  src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbqYj5MXA3bo7ka3ZbRCF1dkrgTUeLGghvzWAF6co3fGDXiDlVQA"></img>
             </div>

@@ -19,12 +19,12 @@ import Content from './Content'
          }
     render (){
         return (
-        <div className = "parent-wrapper">           
-             <div className="side-menu-bar">                     
+        <div className = "admin-dashboard">           
+             <div className="admin-sidebar">                     
               <Sidebar  store ={this.props.store}/>
             </div>
            
-             <div className="content-section">
+             <div className="admin-main">
              <Content  store ={this.props.store} action ={this.props.Action}/>
               </div>
         </div>)

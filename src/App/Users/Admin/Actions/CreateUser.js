@@ -38,7 +38,7 @@ class CreateUser  extends Component {
         })
 
         this.setState(cloneState);
-    this.setState({[e.target.name]:e.target.value});
+   
     }
 
     
@@ -51,17 +51,9 @@ class CreateUser  extends Component {
     render(){
 
         return (
-            <div className = "content-page">
-                <div className="admin-users">
-                    <span> Created Users</span>
-                    <ul>
-                        <li>user 1 </li>
-                        <li>user 1 </li>
-                        <li>user 1 </li>
-                    </ul>
-                </div>
+            <div className = "crte-user-form">             
                  <div className = "user-form">
-                 <div className = "UserActionTtitle"> Creating new user ...</div>
+                 <div className = ""> Creating new user ...</div>
                  <TextField
                                 id="uncontrolled"                                
                                 label="Firstname"  
@@ -114,7 +106,7 @@ class CreateUser  extends Component {
                                 margin="normal"
                                 value = {this.state.password}
                                 />
-                                <div className="admin-actions">
+                                <div className="admin-crt-user">
                                     <Button onClick = {()=> { this.handleSaveUser()}}> Save </Button>
                                     <Button onClick = {()=> { this.handleClear()}}> Clear </Button>
 
