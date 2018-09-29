@@ -15,9 +15,10 @@ import Content from './Content'
      constructor (props)
          {
            super(props);
-           console.log(this.props);
+           console.log(this.props); 
          }
     render (){
+        console.log(this.props);
         return (
         <div className = "admin-dashboard">           
              <div className="admin-sidebar">                     

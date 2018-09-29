@@ -7,12 +7,8 @@ import './index.css';
 import   './index.mobi.css'
 import './login.css'
 import App from './App';
-import  configureStore   from './App/Store'
-import initialState  from './App/Store/initialState'
-
+import  configuredStore   from './App/Store'
 import registerServiceWorker from './registerServiceWorker';
-
-let configuredStore = configureStore(initialState);
 
 
 ReactDOM.render(

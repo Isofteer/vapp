@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {List,ListItem,ListItemIcon,ListItemText,ListItemSecondaryAction, Divider,Avatar,Checkbox}from '@material-ui/core';
 import {Image,BeachAccess,Work} from '@material-ui/icons';
-
+import Util from '../../Util'
 import  CreateUser from './Actions/CreateUser';
 
 class Content extends React.Component{
@@ -15,29 +15,45 @@ class Content extends React.Component{
     render (){
     let props = this.props;
 
-    console.log(props);
+    let UserObject = this.props.store.User;
 
+    console.log(UserObject);
        return (
-       <div className= "admin-content">
-           
+       <div className= "admin-content">           
            <div className="admin-users">
-           <List>
+                    <h3>Super Admin Users</h3>
+             <ul>
+                {
+                     UserObject["Admin"].users.map (object =>
+                        
+                        {return (<li> hellow</li>);}
+                        )
+                }               
+                 
+             </ul>
+             <h3>Registras</h3>
+             <ul>
+                {
+                     UserObject["Registrar"].users.map ((_user,index) =>
+                        
+                        {return (<li key = {index}>  {_user.firstname} &nbsp; {_user.surname}</li>);}
+                        )
+                }               
+                 
+             </ul>
+
+             <ul>
+                {
+                     UserObject["Voter"].users.map (object =>
+                        
+                        {return (<li> hellow</li>);}
+                        )
+                }               
+                 
+             </ul>
+               
 
 
-
-                   <ListItem>
-                    <Avatar alt="Remy Sharp" src="http://simpleicon.com/wp-content/uploads/user1.png" />
-                    <ListItemText primary="User A" />
-                    <ListItemSecondaryAction>
-                    <Checkbox                       
-                        />
-                    </ListItemSecondaryAction>
-                   </ListItem>
-
-         
-                   
-              </List> 
-             
            </div>
        
              <div className="crte-user">

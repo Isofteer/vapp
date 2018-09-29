@@ -61,7 +61,7 @@ import Voter from '../Users/Voters'
           <Button name = 'Registrar' onClick = {(e)=>{this.handleUserDashboardSwitch('Registrar') }} >Registrar</Button>
           <Button name = 'Voter' onClick = {(e)=>{this.handleUserDashboardSwitch('Voter') }} >voter</Button>
           
-            { this.state.activeUserContent['Admin']?<Admin  store ={this.props.reduxStore} Action ={this.props.reduxActions} />:null}
+            { this.state.activeUserContent['Admin']?<Admin  store ={this.props.store} Action ={this.props.action} />:null}
 
             { this.state.activeUserContent['Registrar']?<Registrar/>:null}
 
@@ -75,18 +75,17 @@ import Voter from '../Users/Voters'
 
 
 }
-const mapStateToProps = (state, ownProps)=> {
-    return {
-    
-      reduxStore: state
+const mapStateToProps = (state)=> {
+
+  console.log(state);
+    return {    
+      store: state.UserAction
     }
   }
   const mapDispatchToProps = (dispatch) => {
     return {
-      reduxActions: bindActionCreators(Actions, dispatch)
-
+      action: bindActionCreators(Actions, dispatch)
      
     }
   }
-export default connect(mapStateToProps,mapDispatchToProps
-    )(Maindashboard)
+export default connect(mapStateToProps,mapDispatchToProps)(Maindashboard)

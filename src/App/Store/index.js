@@ -1,9 +1,9 @@
 
 
 import { createStore } from 'redux'
-import { rootReducer } from '../Reducers';
+import  JoinedReducers  from '../Reducers';
+import initialState from './initialState'
 
-   export default  function configureStore (initialState){
-    return createStore( rootReducer, initialState,
+   export default  createStore( JoinedReducers, initialState)
       
-    )}
+

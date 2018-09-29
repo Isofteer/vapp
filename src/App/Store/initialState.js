@@ -9,7 +9,7 @@ export default {
                   },
             Voter:
                   {
-                        user:[]
+                        users:[]
 
                   }
                 
