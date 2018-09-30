@@ -5,7 +5,6 @@ import {TextField,List,ListItem,ListItemIcon,ListItemText, Divider,Button,MenuIt
 import {Image,BeachAccess,Work} from '@material-ui/icons';
 
 
-
 class CreateUser  extends Component {
 
     constructor (props) {
@@ -15,6 +14,7 @@ class CreateUser  extends Component {
             surname:"",
             privilage:"",
             password:"",
+            address:"",
             PrivilageOptions:[
                 {value:1,text:"Admin"},
                 {value:2,text:"Registrar"},
@@ -46,6 +46,8 @@ class CreateUser  extends Component {
     {
      console.log(this.state)
       this.props.func.action.CreateUser(this.state);
+     
+
     }
 
     render(){
@@ -74,6 +76,16 @@ class CreateUser  extends Component {
                                 value = {this.state.surname}
 
                                 />
+                             <TextField
+                                id="uncontrolled"                                
+                                label="Account Address"  
+                                placeholder = "address ..."                            
+                                name = "address"                     
+                                onChange = { (e) =>this.handleInputChange(e)}
+                                margin="normal"
+                                value = {this.state.address}
+
+                                />
                                  <TextField
                                 id="uncontrolled"                                
                                 label="Privilage"  
@@ -96,16 +108,7 @@ class CreateUser  extends Component {
                                     )
                                 }
                                 </TextField>
-                            <TextField
-                                id="uncontrolled"     
-                                                        
-                                label="Password"  
-                                placeholder = "Ben ..."                            
-                                name = "password"                     
-                                onChange = { (e) =>this.handleInputChange(e)}
-                                margin="normal"
-                                value = {this.state.password}
-                                />
+                          
                                 <div className="admin-crt-user">
                                     <Button onClick = {()=> { this.handleSaveUser()}}> Save </Button>
                                     <Button onClick = {()=> { this.handleClear()}}> Clear </Button>
