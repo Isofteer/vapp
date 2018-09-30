@@ -31,7 +31,7 @@ import {Image,BeachAccess,Work} from '@material-ui/icons';
                         <li>
                         <i><Work/></i> &nbsp;Statistics
                         </li>
-                        <li>
+                        <li className ={"pointers"} onClick = {e=>this.props.handleOpenUserActions("usersdashboard")}>
                         <i><Work/></i>&nbsp;  Users
                         </li>
                         <li>

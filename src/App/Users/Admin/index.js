@@ -8,25 +8,31 @@ import {Image,BeachAccess,Work} from '@material-ui/icons';
 
 import Sidebar from './Sidebar'
 import Content from './Content'
+import AdminDashboard from './admindashboard'
 
 
 
  class Layout  extends React.Component{
-     constructor (props)
-         {
+     constructor (props)        
+     {
            super(props);
            console.log(this.props); 
-         }
+     }
+    handleOpenUsers = (_params)=>{
+
+        console.log(_params);
+    }
+
     render (){
         console.log(this.props);
         return (
         <div className = "admin-dashboard">           
              <div className="admin-sidebar">                     
-              <Sidebar  store ={this.props.store}/>
+              <Sidebar handleOpenUserActions = {this.handleOpenUsers.bind(this)}  store ={this.props.store}/>
             </div>
            
              <div className="admin-main">
-             <Content  store ={this.props.store} action ={this.props.Action}/>
+             <AdminDashboard  store ={this.props.store} action ={this.props.Action}/>
               </div>
         </div>)
     }

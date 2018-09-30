@@ -12,10 +12,10 @@
 }
 .admin-sidebar
 {
-
+    color:inherit
 }
 .admin-main{
-flex:1;
+flex:2;
 display: flex
 }
 
@@ -27,7 +27,7 @@ align-items: center
 }
 
 .side-menubar {
-
+color:inherit
 }
 .side-menubar ul{
 padding:0;
@@ -65,4 +65,105 @@ flex: 3
 {
     display: flex;
     flex-flow: row-reverse;
+}
+.pointers {
+    cursor: pointer;
+}
+.admin-main-content
+{ 
+  flex: 1;
+
+}
+.users-list-aside{
+    display: flex;
+  
+    height: 100%;
+
+}
+
+.users-list-aside  .list{
+     flex:1 ;    
+     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+     box-shadow: 0 6px 12px rgba(0,0,0,.175);
+     text-align: left;
+     padding: 3px 7px;
+ }
+ .list ul{
+     padding: 0;
+ }
+ .list li 
+ {
+     list-style: none
+ }
+ .list li a
+ {
+     padding: 4px 7px;
+     cursor: pointer
+ }
+
+ 
+.users-list-aside  .more-actions{
+    flex:3 ;    
+
+}
+.user-dashboard-label{
+  text-align: right
+}
+.user-dashboard-label div{
+   margin:7px
+  }
+.command-pane{
+    display: flex;
+    padding: 3px 7px;
+    color:gray
+    
+    
+
+}
+
+.command-pane span a{
+font-size: 12px;
+}
+
+.command-pane span {
+    font-size: 12px;
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-color: transparent;
+    padding: 0 6px 12px 5px;    
+    cursor: pointer;
+    transition: all ease-in .2s;
+    font-weight: 600;
+    margin-left: 30px;
+
+    }
+.command-pane span:hover {
+   
+    border-color:rgb(29, 248, 237);
+    color:rgb(29, 248, 237);
+    
+    }
+
+    .command-pane span:active {
+   
+        border-color:rgb(29, 248, 237);
+        color:rgb(29, 248, 237);
+        
+        }
+.theme-emphasizer{
+    color:rgb(29, 248, 237);
+    font-weight: 600;
+}
+.user-metrics ul li {
+display: flex;
+}
+
+.user-metrics ul span {
+    min-width: 100px;
+    padding:10px;
+    font-weight:600;
+}
+.user-metrics ul span.theme-emphasizer {
+ font-size: 20px;
+ text-align: right
 }
