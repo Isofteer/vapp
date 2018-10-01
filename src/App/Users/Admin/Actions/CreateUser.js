@@ -15,6 +15,8 @@ class CreateUser  extends Component {
             privilage:"",
             password:"",
             address:"",
+            isRegister:true,
+            isCreateAccount:false,
             PrivilageOptions:[
                 {value:1,text:"Admin"},
                 {value:2,text:"Registrar"},
@@ -42,20 +44,36 @@ class CreateUser  extends Component {
     }
 
     
-    handleSaveUser = ()=>
+    handleSave = ()=>
     {
-     console.log(this.state)
-      this.props.func.action.CreateUser(this.state);
+        if (this.props.register){
+            console.log(this.state)
+            this.props.func.CreateUser(this.state);
+        }
+        if (this.props.create){
+            console.log(this.state)
+            this.props.func.CreateUser(this.state);
+        }
      
 
     }
+    
+    handleCreateAccount = ()=>
+    {
+     console.log(this.state)
+      this.props.func.CreateUser(this.state);
+     
+
+    }
+
+
 
     render(){
 
         return (
             <div className = "crte-user-form">             
                  <div className = "user-form">
-                 <div className = ""> Creating new user ...</div>
+                 <div className = ""> _</div>
                  <TextField
                                 id="uncontrolled"                                
                                 label="Firstname"  
@@ -110,7 +128,7 @@ class CreateUser  extends Component {
                                 </TextField>
                           
                                 <div className="admin-crt-user">
-                                    <Button onClick = {()=> { this.handleSaveUser()}}> Save </Button>
+                                    <Button onClick = {()=> { this.handleSave()}}> Register  </Button>
                                     <Button onClick = {()=> { this.handleClear()}}> Clear </Button>
 
                                 </div>

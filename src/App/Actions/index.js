@@ -13,6 +13,6 @@ export const GetUser = ( id)=>
 
 export const GetUsers  = ()=>
 {
-   return {type:types.GETUSERS,payload:null}
+   return {type:types.GETUSERS,payload:[]}
 
 }

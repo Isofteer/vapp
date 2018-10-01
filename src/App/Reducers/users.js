@@ -2,7 +2,7 @@ import Util from '../Util'
 import initialState from '../Store/initialState'
 import types from '../Types'
 
-import  {SaveUserToBlockchain} from '../Contracts/Actions'
+import  {SaveUserToBlockchain,GetUsersFromBlockchain} from '../Contracts/Actions'
 
 export  function UserAction(state = initialState, action) {
   switch (action.type) {
@@ -26,7 +26,10 @@ export  function UserAction(state = initialState, action) {
       } 
 
       case types.GETUSERS:
-      return {...state,  posts: action.payload
+            let cloneState = {...state.User};
+      GetUsersFromBlockchain(cloneState);
+
+      return {...state, cloneState
       } 
     default:
       return state

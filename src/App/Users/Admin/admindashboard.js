@@ -12,21 +12,31 @@ class  AdminDashboard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            checked:false,
+            checked:true,    
+            filterType:-1,       
         }
     }
-    handleChecking = e=>{
-        this.setState({checked:!this.state.checked})
+    handleChecking = e =>{
+  this.setState({checked:!this.state.checked});
     }
+
+    filterBy = value =>{
+        this.setState({filterType:value});
+
+        this.props.action.GetUsers();
+    }
+
+
 
     render(){
 
         let  checked = this.state.checked;
+        let action = this.props.action;
         return (
             <div className="admin-main-content">  
                 <div className="user-dashboard-label"> 
                  <Chip onClick ={e =>{this.handleChecking()}} label ="Register">   </Chip>
-                 <Chip onClick ={e =>{this.handleChecking()}} label ="Create Account">  </Chip>
+                 
                  </div>
                 <div className="users-list-aside">
                     <div  className="list">                    
@@ -35,22 +45,25 @@ class  AdminDashboard extends Component {
                     <div  className="more-actions">
                    
                            <div className ="command-pane">
-                         <span> <a> All Users </a></span>
-                         <span> <a> Admins  </a></span>
-                         <span> <a> Registrars  </a></span>
-                         <span> <a> Voters  </a></span>
+                         <span onClick ={e=>{this.filterBy(0)}}> <a> All Users </a></span>
+                         <span onClick ={e=>{this.filterBy(1)}}> <a> Admins  </a></span>
+                         <span onClick ={e=>{this.filterBy(2)}}> <a> Registrars  </a></span>
+                         <span onClick ={e=>{this.filterBy(3)}}> <a> Voters  </a></span>
                         
 
                         </div>
                                                     
-                           <Slide  in ={checked}> 
-                               <HelperTable/>
-                           </Slide >
+                         {
+                          checked?  <HelperTable  func  = {action} filterType = {this.state.filterType}/>:null }
+                         {
+                          !checked?  <CreateUser  func  = {action}/>:null 
+                         }
+                             
+                         
 
-                            <Slide  in ={checked}>                            
-                               <CreateUser/>
-                           </Slide >
-
+                                                       
+                              
+                         
                     </div>
                    
                </div>

@@ -55,6 +55,7 @@ flex: 3
 .crte-user-form{
     display: flex;
     flex-flow:column wrap;
+    margin:10px;
 
 }
 .crte-user-form .user-form{

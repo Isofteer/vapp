@@ -25,7 +25,7 @@ export function SaveUserToBlockchain   (_user){
 
 
 
-export function GetUsersFromBlockchain   (){
+export function GetUsersFromBlockchain   (state){
    
 
     Artifacts.votingContract.methods.GetUsers().call({from: Artifacts.defaultAccount},
