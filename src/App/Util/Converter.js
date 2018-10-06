@@ -18,13 +18,19 @@ return usersArray;
 }
 
 
-export const MergeAllUsersInStore =(UserListInStore)=>{
+export const MergeAllUsersInStore =(UserListInStore,filter)=>{
  var UserObject = UserListInStore.User;
 var objects = Util.UserTypes;
 var AllUsers = [];
 
 Object.keys(Util.UserTypes).map((key)=>{
-    AllUsers = [...AllUsers,...UserObject[Util.UserTypes[key]].users]  
+      if(filter==0 ||filter==-1)
+      {
+        AllUsers = [...AllUsers,...UserObject[Util.UserTypes[key]].users]  
+      }
+      else{
+        AllUsers = [...AllUsers,...UserObject[Util.UserTypes[filter]].users]
+      }
 })
 
 return AllUsers;

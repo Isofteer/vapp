@@ -30,12 +30,13 @@ export  function UserAction(state = initialState, action) {
       action.payload.map((_user)=>{
 
         var UserType = User[Util.UserTypes[_user.privilage]];  
-
-          Object.keys(_user).map((key)=>{
-            _user[key] =  _user[key].trim();
-          })
-
+       
+        let index = UserType.users.findIndex(item => item.address == _user.address);
+       if(index==-1)
+       {
         UserType.users.push(_user);
+       }
+        
         
       });  
 

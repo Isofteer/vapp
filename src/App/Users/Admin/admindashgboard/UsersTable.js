@@ -6,8 +6,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {Paper,Chip} from '@material-ui/core';
 import {MergeAllUsersInStore} from '../../../Util/Converter'
+import  OpenUserDialog from './OpenUserDialog'
 
 let counter = 0;
 function createData(name,  address,privilage,status,actions) {
@@ -19,30 +20,46 @@ function createData(name,  address,privilage,status,actions) {
 
     constructor (props){
         super(props);
+        this.state= {
+                user:{},
+                DialogOpen:false
+        }
     }
               
-    CreateUsers  =e =>{
+    CreateUsers  =filter =>{
     
-        console.log(this.props.store)
-      
-      let allUsers =MergeAllUsersInStore(this.props.store);
+  
+      let allUsers = [...new Set(MergeAllUsersInStore(this.props.store,filter))];
   
        let NewdData = [];
   
       allUsers.map((_user)=>{
      NewdData.push(createData(_user.firstName + " "+_user.surname, _user.address,_user.privilage , "Active",""));
-      });
-     
+      });    
   
       return NewdData;
         
       }
+
+      EditUser =user=>{
+        
+        this.setState({user:user,DialogOpen:!this.state.DialogOpen})
+      }
+      handleClickOpen = () => {
+        this.setState({ DialogOpen: true });
+      };
+    
+      handleClose = () => {
+        this.setState({ DialogOpen: false });
+      };
+    
     render(){
 
-        const data = this.CreateUsers(this.props.store);
+        const data = this.CreateUsers(this.props.filterBy);
 
         return (
         <div>
+          <OpenUserDialog   handleClickOpen = {this.handleClickOpen.bind(this)}  handleClose = {this.handleClose.bind(this)} open = {this.state.DialogOpen} user = {this.state.user} />
             <Table>
              <TableHead>
                 <TableRow>
@@ -63,7 +80,7 @@ function createData(name,  address,privilage,status,actions) {
                              <TableCell> {user.address}</TableCell>
                              <TableCell> {user.privilage}</TableCell>
                              <TableCell> active </TableCell>
-                             <TableCell> <a> edit</a> </TableCell>
+                             <TableCell> <Chip onClick = {()=>this.EditUser(user)} label ="edit"/> </TableCell>
                          
                           </TableRow>
                   })  

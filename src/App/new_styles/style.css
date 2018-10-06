@@ -77,7 +77,6 @@ flex: 3
 }
 .users-list-aside{
     display: flex;
-  
     height: 100%;
 
 }
@@ -107,6 +106,11 @@ flex: 3
     flex:3 ;    
 
 }
+.more-actions{
+    height: 100%;
+    overflow-y: auto;
+}
+
 .user-dashboard-label{
   text-align: right
 }
