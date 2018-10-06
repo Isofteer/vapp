@@ -1,7 +1,13 @@
 import * as Artifacts from './index'
 
-export function SaveUserToBlockchain   (_user){
-    //web3.utils.fromAscii(this.state.password
+export function GetUsersFromContract   (state){   
+
+    return Artifacts.votingContract.methods.GetUsers().call({from: Artifacts.defaultAccount});
+       
+
+}
+export function RegisterUsersToContract   (_user){   
+
     let web3 = Artifacts.web3;
     let _params = {
         address:_user.address.trim(),
@@ -10,28 +16,6 @@ export function SaveUserToBlockchain   (_user){
         privilage:_user.privilage
     }
 
-    Artifacts.votingContract.methods.RegisterUser(_params.fname,_params.sname,_params.privilage).send({from: _params.address,gas:3000000},
-        (error, response)=>{
-           if(error)
-           {
-             alert("Theres was an error with this activity");
-           }
-           else{
-            alert("Success");
-           }
-        });
-
-}
-
-
-
-export function GetUsersFromBlockchain   (state){
-   
-
-    Artifacts.votingContract.methods.GetUsers().call({from: Artifacts.defaultAccount},
-        (error, response)=>{
-            console.log(error);
-            console.log(response);
-        });
+    return Artifacts.votingContract.methods.RegisterUser(_params.fname,_params.sname,_params.privilage).send({from: _params.address,gas:3000000}); 
 
 }

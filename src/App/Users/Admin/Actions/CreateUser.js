@@ -45,28 +45,11 @@ class CreateUser  extends Component {
 
     
     handleSave = ()=>
-    {
-        if (this.props.register){
+    {       
             console.log(this.state)
-            this.props.func.CreateUser(this.state);
-        }
-        if (this.props.create){
-            console.log(this.state)
-            this.props.func.CreateUser(this.state);
-        }
-     
+            this.props.func.RegisterUsersToBlockchain(this.state);      
 
     }
-    
-    handleCreateAccount = ()=>
-    {
-     console.log(this.state)
-      this.props.func.CreateUser(this.state);
-     
-
-    }
-
-
 
     render(){
 

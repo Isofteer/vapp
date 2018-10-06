@@ -18,13 +18,15 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
+import {MergeAllUsersInStore} from '../../../Util/Converter'
 
 import {Chip} from '@material-ui/core';
 const rows = [
     { id: 'name', numeric: false, disablePadding: true, label: 'Name (full)' },
     { id: 'privilage', numeric: false, disablePadding: false, label: 'Roles' },
+    { id: 'address', numeric: false, disablePadding: false, label: 'Address' },
     { id: 'status', numeric: false, disablePadding: false, label: 'Status' },
-    { id: 'status', numeric: false, disablePadding: false, label: 'Actions' },
+    { id: 'action', numeric: false, disablePadding: false, label: 'Action' },
    
   ];
 
@@ -64,9 +66,9 @@ const styles = theme => ({
   });
 
 let counter = 0;
-function createData(name, privilage, status,actions) {
+function createData(name, privilage, address,status,actions) {
   counter += 1;
-  return { id: counter, name, privilage, status, actions};
+  return { id: counter, name, privilage,address, status, actions};
 }
 
 
@@ -202,21 +204,27 @@ class EnhancedTableHead extends React.Component {
   
 
 
-class EnhancedTable extends React.Component {
-    state = {
-      order: 'asc',
-      orderBy: 'calories',
-      selected: [],
-      data: [
-        createData('Tonnie Mikes', "Admin", "Active" ,""),
-        createData('Andrew Jones', "Admin", "Active",""), 
-        createData('Jessie Jay',   "Re",   "Active",""),
-       
-      ],
-      page: 0,
-      rowsPerPage: 5,
-    };
-  
+class UsersTable extends React.Component {
+    constructor(props){
+      super(props);
+      this.state = {
+        order: 'asc',
+        orderBy: 'calories',
+        selected: [],
+        data:this.CreateUsers(),
+        
+        // [
+        //   createData('Tonnie Mikes', "Admin","3463843438", "Active" ,""),
+        //   createData('Andrew Jones', "Admin","3463843438", "Active",""), 
+        //   createData('Jessie Jay',   "Re", "3463843438",  "Active",""),
+         
+        // ],
+        page: 0,
+        rowsPerPage: 5,
+      };
+      console.log(this.props.store);
+    }
+ 
     handleRequestSort = (event, property) => {
       const orderBy = property;
       let order = 'desc';
@@ -268,15 +276,30 @@ class EnhancedTable extends React.Component {
     isSelected = id => this.state.selected.indexOf(id) !== -1;
   
                      
-    componentDidMount  =e =>{
+    CreateUsers  =e =>{
     
-     
+      console.log(this.props.store)
+    //this.setState({data:this.props.store.usersArray})
+    let allUsers =MergeAllUsersInStore(this.props.store);
+
+     let NewdData = [];
+
+    allUsers.map((_user)=>{
+   NewdData.push(createData(_user.firstName + _user.surname, _user.address,_user.privilage , "Active",""));
+    });
+   
+
+    return NewdData;
       
     }
 
     render() {
       const { classes } = this.props;
-      const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
+
+      const data = this.CreateUsers(this.props.store);
+
+      const {order, orderBy, selected, rowsPerPage, page } = this.state;
+
       const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
   
       return (
@@ -311,8 +334,9 @@ class EnhancedTable extends React.Component {
                           <Checkbox checked={isSelected} />
                         </TableCell>
                         <TableCell component="th" scope="row" padding="none">
-                           <span class="theme-emphasizer"> Admin</span> &nbsp; <span>{n.name} </span> 
+                           <span class="theme-emphasizer"> Admin</span> &nbsp; <span>{n.name.trim()} </span> 
                         </TableCell>
+                        <TableCell >{n.address}</TableCell>
                         <TableCell >{n.privilage}</TableCell>
                         <TableCell >{n.status}</TableCell>
                         <TableCell >
@@ -353,8 +377,8 @@ class EnhancedTable extends React.Component {
     }
   }
   
-  EnhancedTable.propTypes = {
+  UsersTable.propTypes = {
     classes: PropTypes.object.isRequired,
   };
   
-  export default withStyles(styles)(EnhancedTable);
+  export default withStyles(styles)(UsersTable);

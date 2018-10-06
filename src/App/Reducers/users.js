@@ -2,21 +2,21 @@ import Util from '../Util'
 import initialState from '../Store/initialState'
 import types from '../Types'
 
-import  {SaveUserToBlockchain,GetUsersFromBlockchain} from '../Contracts/Actions'
+import  {RegisterUsersToContract} from '../Contracts/Actions'
 
 export  function UserAction(state = initialState, action) {
+
+  let User = {... state.User}; 
+   
+    console.log(User);
+
   switch (action.type) {
-    case types.CREATEUSER:
-       
-       let User = {... state.User};
+    case types.CREATEUSER:  
+             var UserType = User[Util.UserTypes[action.payload.privilage]];  
 
-        var UserType = User[Util.UserTypes[action.payload.privilage]];  
-
-          UserType.users  = [ ...UserType.users,action.payload]
-       
-          console.log(User);
-          
-          SaveUserToBlockchain(action.payload);
+             UserType.users  = [ ...UserType.users,action.payload]
+ 
+             RegisterUsersToContract(action.payload);
 
       return {...state, User
       } 
@@ -25,11 +25,21 @@ export  function UserAction(state = initialState, action) {
       return {...state,  posts: action.payload
       } 
 
-      case types.GETUSERS:
-            let cloneState = {...state.User};
-      GetUsersFromBlockchain(cloneState);
+      case types.GETUSERS:  
 
-      return {...state, cloneState
+      action.payload.map((_user)=>{
+
+        var UserType = User[Util.UserTypes[_user.privilage]];  
+
+          Object.keys(_user).map((key)=>{
+            _user[key] =  _user[key].trim();
+          })
+
+        UserType.users.push(_user);
+        
+      });  
+
+      return {...state, User
       } 
     default:
       return state

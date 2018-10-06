@@ -5,7 +5,8 @@ import {Typography,Chip,Slide ,List,ListItem,ListItemIcon,ListItemText,ListItemS
 import {Image,BeachAccess,Work} from '@material-ui/icons';
 
 import UserList from './admindashgboard/userlist'
-import HelperTable from './admindashgboard/UserlistHelper_A'
+// import UsersTable from './admindashgboard/UserlistHelper_A'
+import UsersTable from './admindashgboard/UsersTable'
 import CreateUser from './Actions/CreateUser'
 class  AdminDashboard extends Component {
 
@@ -13,17 +14,19 @@ class  AdminDashboard extends Component {
         super(props);
         this.state = {
             checked:true,    
-            filterType:-1,       
+            filterType:-1,  
+            data:[]     
         }
     }
     handleChecking = e =>{
-  this.setState({checked:!this.state.checked});
+          this.setState({checked:!this.state.checked});
     }
 
     filterBy = value =>{
-        this.setState({filterType:value});
 
-        this.props.action.GetUsers();
+           this.setState({filterType:value});
+
+           this.props.action.GetBlockChainUsers();
     }
 
 
@@ -54,7 +57,7 @@ class  AdminDashboard extends Component {
                         </div>
                                                     
                          {
-                          checked?  <HelperTable  func  = {action} filterType = {this.state.filterType}/>:null }
+                          checked?  <UsersTable filterBy = { this.state.filterType}  store = {this.props.store} func  = {action} filterType = {this.state.filterType}/>:null }
                          {
                           !checked?  <CreateUser  func  = {action}/>:null 
                          }
